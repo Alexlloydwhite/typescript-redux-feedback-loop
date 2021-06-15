@@ -8,10 +8,10 @@ import { Provider } from 'react-redux';
 
 // Initial state of reducer
 const initState = {
-  feeling: '',
-  understanding: '',
-  support: '',
-  comments: '',
+  feeling: 0,
+  understanding: 0,
+  support: 0,
+  comments: 0,
 }
 
 // Reducer type interface
@@ -46,8 +46,11 @@ const feedbackReducer = (state = initState, action: ACTIONTYPE) => {
       }
     case 'CLEAR_FEEDBACK':
       return initState;
+      
     default:
-      throw new Error();
+      return {
+        initState
+      }
   }
 }
 
