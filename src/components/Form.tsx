@@ -12,7 +12,7 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [state, setState] = useState(0);
+    const [state, setState] = useState('');
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -24,13 +24,14 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName }) => {
 
     return (
         <div>
-            <h2>{message}</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 style={{textAlign: 'center'}}>{message}</h2>
+            <form onSubmit={handleSubmit} style={{textAlign: 'center'}}>
                 <input
                     type="number"
                     placeholder={name}
                     value={state}
                     onChange={(e: any) => setState(e.target.value)}
+                    style={{marginRight: 10}}
                 />
                 <button>
                     Next
