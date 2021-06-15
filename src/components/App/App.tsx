@@ -8,19 +8,21 @@ const pages = [
     name: 'feeling',
     message: 'How are you feeling today?',
     dispatch: 'SET_FEELING',
-    next: 'support'
   },
   { 
     name: 'support', 
     message: 'How well are you being supported?', 
     dispatch: 'SET_SUPPORT', 
-    next: '/understanding' 
   },
   {
     name: 'understanding',
     message: 'How well are you understanding the content?',
     dispatch: 'SET_UNDERSTANDING',
-    next: '/comments'
+  },
+  {
+    name: 'comments',
+    message: 'Any comments you want to leave?',
+    dispatch: 'SET_COMMENTS',
   }
 ]
 
@@ -32,9 +34,9 @@ export const App: React.FC = () => {
         <h4>Don't Forget It!</h4>
       </header>
       <Router>
-        {pages.map((page, idx) => (
-          <Route exact path={`/${page.name}`} key={idx}>
-            <Form name={page.name} message={page.message} dispatchName={page.dispatch} next={page.next} />
+        {pages.map((page, idx: number) => (
+          <Route exact path={`/${idx}`} key={idx}>            
+            <Form name={page.name} message={page.message} dispatchName={page.dispatch} next={idx + 1} />
           </Route>
         ))}
       </Router>

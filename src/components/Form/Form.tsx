@@ -6,7 +6,7 @@ interface Props {
     message: string;
     name: string;
     dispatchName: string;
-    next: string;
+    next: number;
 }
 
 export const Form: React.FC<Props> = ({ message, name, dispatchName, next }) => {
@@ -21,7 +21,7 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName, next }) => 
             type: dispatchName,
             payload: state
         })
-        history.push(next)
+        history.push(String(next))
     }
 
     return (
