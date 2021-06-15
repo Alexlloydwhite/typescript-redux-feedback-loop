@@ -6,9 +6,30 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
+const initState = {
+  feeling: '',
+  understanding: '',
+  support: '',
+  comments: '',
+}
+
+const feedbackReducer = (state = initState, action: any) => {
+  
+}
+
+const store = createStore (
+  combineReducers(
+    {
+      feedbackReducer,
+    }
+  )
+)
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
