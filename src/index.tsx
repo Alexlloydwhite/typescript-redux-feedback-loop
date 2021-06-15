@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
+// Initial state of reducer
 const initState = {
   feeling: '',
   understanding: '',
@@ -13,11 +14,44 @@ const initState = {
   comments: '',
 }
 
-const feedbackReducer = (state = initState, action: any) => {
-  
+// Reducer type interface
+type ACTIONTYPE =
+  | { type: 'SET_FEELING'; payload: number }
+  | { type: 'SET_UNDERSTANDING'; payload: number }
+  | { type: 'SET_SUPPORT'; payload: number }
+  | { type: 'SET_COMMENTS'; payload: string }
+  | { type: 'CLEAR_FEEDBACK'; payload: any }
+
+const feedbackReducer = (state = initState, action: ACTIONTYPE) => {
+  switch (action.type) {
+    case 'SET_FEELING':
+      return {
+        ...state,
+        feeling: action.payload
+      }
+    case 'SET_UNDERSTANDING':
+      return {
+        ...state,
+        understanding: action.payload
+      }
+    case 'SET_SUPPORT':
+      return {
+        ...state,
+        support: action.payload
+      }
+    case 'SET_COMMENTS':
+      return {
+        ...state,
+        comments: action.payload
+      }
+    case 'CLEAR_FEEDBACK':
+      return initState;
+    default:
+      throw new Error();
+  }
 }
 
-const store = createStore (
+const store = createStore(
   combineReducers(
     {
       feedbackReducer,
