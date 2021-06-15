@@ -11,8 +11,6 @@ interface Props {
 export const Form: React.FC<Props> = ({ message, name, dispatchName }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const params: number = useParams();
-    const next = params + 1;
 
     const [state, setState] = useState(0);
 
@@ -22,7 +20,6 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName }) => {
             type: dispatchName,
             payload: state
         })
-        history.push(`/${next}`)
     }
 
     return (
@@ -33,7 +30,11 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName }) => {
                     type="number"
                     placeholder={name}
                     value={state}
+                    onChange={(e: any) => setState(e.target.value)}
                 />
+                <button>
+                    Next
+                </button>
             </form>
         </div>
     );
