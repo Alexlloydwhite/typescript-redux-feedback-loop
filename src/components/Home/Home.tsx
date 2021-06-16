@@ -5,7 +5,7 @@ export const Home: React.FC = () => {
     return (
         <div>
             <h1>Home Page</h1>
-            <button onClick={() => history.push('/1')}>Begin Feedback</button>
+            <button onClick={() => history.push('/0')}>Begin Feedback</button>
         </div>
     )
 }
