@@ -36,6 +36,9 @@ export const App: React.FC = () => {
         <h1 className="App-title">Feedback!</h1>
         <h4>Don't Forget It!</h4>
       </header>
+
+      <Steps stepNames={arrayOfPages} />
+
       <Router>
         <Route exact path='/'>
           <Home />
@@ -59,7 +62,6 @@ export const App: React.FC = () => {
           <Review />
         </Route>
       </Router>
-      <Steps stepNames={arrayOfPages} />
     </div>
   );
 }
