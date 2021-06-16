@@ -1,6 +1,4 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Feedback Loop (with Redux & Typescript)!
 
 ## Description
 
