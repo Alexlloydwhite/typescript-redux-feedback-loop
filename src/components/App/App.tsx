@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Home } from '../Home/Home';
 import { Form } from '../Form/Form';
+import { Steps} from '../Form/Stepper';
 import { Review } from '../Review/Review';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
@@ -58,6 +59,7 @@ export const App: React.FC = () => {
           <Review />
         </Route>
       </Router>
+      <Steps stepNames={arrayOfPages} />
     </div>
   );
 }
