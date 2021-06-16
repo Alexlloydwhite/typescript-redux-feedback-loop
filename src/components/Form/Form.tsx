@@ -6,11 +6,11 @@ interface Props {
     message: string;
     name: string;
     dispatchName: string;
-    idx: number;
+    pageIndex: number;
     length: number;
 }
 
-export const Form: React.FC<Props> = ({ message, name, dispatchName, idx, length }) => {
+export const Form: React.FC<Props> = ({ message, name, dispatchName, pageIndex, length }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -24,10 +24,10 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName, idx, length
             payload: state
         });
 
-        if (idx === length - 1) {
+        if (pageIndex === length - 1) {
             history.push('/review')
         } else {
-            const newIdx: number = idx + 1;
+            const newIdx: number = pageIndex + 1;
             history.push(String(newIdx));
         }
     }

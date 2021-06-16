@@ -5,7 +5,7 @@ import { Form } from '../Form/Form';
 import { Review } from '../Review/Review';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
-const pages = [
+const arrayOfPages = [
   {
     name: 'feeling',
     message: 'How are you feeling today?',
@@ -39,19 +39,21 @@ export const App: React.FC = () => {
         <Route exact path='/'>
           <Home />
         </Route>
+
         {
-          pages.map((page: any, idx: number) => (
-            <Route exact path={`/${idx}`} key={idx}>
+          arrayOfPages.map((page: any, pageIndex: number) => (
+            <Route exact path={`/${pageIndex}`} key={pageIndex}>
               <Form
                 name={page.name}
                 message={page.message}
                 dispatchName={page.dispatch}
-                idx={idx}
-                length={pages.length}
+                pageIndex={pageIndex}
+                length={arrayOfPages.length}
               />
             </Route>
           ))
         }
+        
         <Route exact path='/review'>
           <Review />
         </Route>
