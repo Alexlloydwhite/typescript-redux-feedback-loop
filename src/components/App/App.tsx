@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Form } from '../Form/Form';
+import { Review } from '../Review/Review';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 const pages = [
@@ -9,10 +10,10 @@ const pages = [
     message: 'How are you feeling today?',
     dispatch: 'SET_FEELING',
   },
-  { 
-    name: 'support', 
-    message: 'How well are you being supported?', 
-    dispatch: 'SET_SUPPORT', 
+  {
+    name: 'support',
+    message: 'How well are you being supported?',
+    dispatch: 'SET_SUPPORT',
   },
   {
     name: 'understanding',
@@ -34,12 +35,20 @@ export const App: React.FC = () => {
         <h4>Don't Forget It!</h4>
       </header>
       <Router>
-        {pages.map((page, idx: number) => (
-          <Route exact path={`/${idx}`} key={idx}>            
-            <Form name={page.name} message={page.message} dispatchName={page.dispatch} next={idx + 1} />
-          </Route>
-        ))}
+        {
+          pages.map((page: any, idx: number) => {
+            return idx < pages.length ?
+              <Route exact path={`/${idx}`} key={idx}>
+                <Form name={page.name} message={page.message} dispatchName={page.dispatch} next={idx + 1} />
+              </Route>
+              :
+              <Route exact path={`/${idx}`}>
+                <Review />
+              </Route>
+          })
+        }
       </Router>
     </div>
   );
 }
+

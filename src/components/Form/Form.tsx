@@ -12,7 +12,7 @@ interface Props {
 export const Form: React.FC<Props> = ({ message, name, dispatchName, next }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    
+
     const [state, setState] = useState('');
 
     const handleSubmit = (e: any) => {
@@ -20,8 +20,8 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName, next }) => 
         dispatch({
             type: dispatchName,
             payload: state
-        })
-        history.push(String(next))
+        });
+        history.push(String(next));
     }
 
     return (
@@ -33,7 +33,7 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName, next }) => 
                     placeholder={name}
                     value={state}
                     onChange={(e: any) => setState(e.target.value)}
-                    style={{marginRight: 10}}
+                    style={{ marginRight: 10 }}
                 />
                 <button type="submit">Next</button>
             </form>
