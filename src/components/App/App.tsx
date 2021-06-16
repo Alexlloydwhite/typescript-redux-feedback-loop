@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Home } from '../Home/Home';
 import { Form } from '../Form/Form';
 import { Review } from '../Review/Review';
 import { HashRouter as Router, Route } from 'react-router-dom';
@@ -35,6 +36,9 @@ export const App: React.FC = () => {
         <h4>Don't Forget It!</h4>
       </header>
       <Router>
+        <Route exact path='/'>
+          <Home />
+        </Route>
         {
           pages.map((page: any, idx: number) => (
             <Route exact path={`/${idx}`} key={idx}>

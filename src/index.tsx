@@ -11,7 +11,7 @@ const initState = {
   feeling: 0,
   understanding: 0,
   support: 0,
-  comments: 0,
+  comments: '',
 }
 
 // Reducer type interface
@@ -57,10 +57,13 @@ const feedbackReducer = (state = initState, action: ACTIONTYPE) => {
 const store = createStore(
   combineReducers(
     {
-      feedbackReducer,
+      feedback: feedbackReducer,
     }
   )
 )
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 ReactDOM.render(
   <React.StrictMode>
