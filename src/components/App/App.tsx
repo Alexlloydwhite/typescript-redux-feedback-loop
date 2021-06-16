@@ -36,17 +36,21 @@ export const App: React.FC = () => {
       </header>
       <Router>
         {
-          pages.map((page: any, idx: number) => {
-            return idx < pages.length ?
-              <Route exact path={`/${idx}`} key={idx}>
-                <Form name={page.name} message={page.message} dispatchName={page.dispatch} next={idx + 1} />
-              </Route>
-              :
-              <Route exact path={`/${idx}`}>
-                <Review />
-              </Route>
-          })
+          pages.map((page: any, idx: number) => (
+            <Route exact path={`/${idx}`} key={idx}>
+              <Form
+                name={page.name}
+                message={page.message}
+                dispatchName={page.dispatch}
+                idx={idx}
+                length={pages.length}
+              />
+            </Route>
+          ))
         }
+        <Route exact path='/review'>
+          <Review />
+        </Route>
       </Router>
     </div>
   );
