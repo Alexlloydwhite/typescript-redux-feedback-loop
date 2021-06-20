@@ -11,6 +11,9 @@ app.get('/', (req, res) => {
 });
 
 const PORT = 5000;
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+app.listen(PORT, err => {
+    if (err) {
+        return console.log(`Error starting sever ${err}`);
+    }
+    return console.log(`Listening on port ${PORT}`);
 });
