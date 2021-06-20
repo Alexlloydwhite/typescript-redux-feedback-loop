@@ -2,28 +2,27 @@ import React from 'react';
 import './App.css';
 import { Home } from '../Home/Home';
 import { Form } from '../Form/Form';
-import { Steps} from '../Form/Stepper';
 import { Review } from '../Review/Review';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 const arrayOfPages = [
   {
-    name: 'feeling',
+    name: 'Feeling',
     message: 'How are you feeling today?',
     dispatch: 'SET_FEELING',
   },
   {
-    name: 'support',
+    name: 'Support',
     message: 'How well are you being supported?',
     dispatch: 'SET_SUPPORT',
   },
   {
-    name: 'understanding',
+    name: 'Understanding',
     message: 'How well are you understanding the content?',
     dispatch: 'SET_UNDERSTANDING',
   },
   {
-    name: 'comments',
+    name: 'Comments',
     message: 'Any comments you want to leave?',
     dispatch: 'SET_COMMENTS',
   }
@@ -36,8 +35,6 @@ export const App: React.FC = () => {
         <h1 className="App-title">Feedback!</h1>
         <h4>Don't Forget It!</h4>
       </header>
-
-      <Steps stepNames={arrayOfPages} />
 
       <Router>
         <Route exact path='/'>
@@ -52,7 +49,7 @@ export const App: React.FC = () => {
                 message={page.message}
                 dispatchName={page.dispatch}
                 pageIndex={pageIndex}
-                length={arrayOfPages.length}
+                arrayOfPages={arrayOfPages}
               />
             </Route>
           ))

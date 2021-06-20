@@ -3,24 +3,26 @@ import {
     Step,
     StepLabel
 } from '@material-ui/core'
+import { useState } from 'react'
+
 
 interface Props {
-    stepNames: any;
+    arrayOfPages: any;
 }
 
-export const Steps: React.FC<Props> = ({ stepNames }) => {
-
+export const Steps: React.FC<Props> = ({ arrayOfPages }) => {
+    const [activeStep, setActiveStep] = useState(0);
     return (
-        <Stepper>
+        <Stepper activeStep={activeStep}>
             <Step>
                 <StepLabel>
                     Home
                 </StepLabel>
             </Step>
-            {stepNames.map((name: any, index: number) => (
+            {arrayOfPages.map((page: any, index: number) => (
                 <Step key={index}>
                     <StepLabel>
-                        {name.name}
+                        {page.name}
                     </StepLabel>
                 </Step>
             ))}

@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Slider } from '@material-ui/core';
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 
 interface Props {
     message: string;
     name: string;
     dispatchName: string;
     pageIndex: number;
-    length: number;
+    arrayOfPages: any;
 }
 
-export const Form: React.FC<Props> = ({ message, name, dispatchName, pageIndex, length }) => {
+export const Form: React.FC<Props> = ({ message, name, dispatchName, pageIndex, arrayOfPages }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -24,7 +27,7 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName, pageIndex, 
             payload: state
         });
 
-        if (pageIndex === length - 1) {
+        if (pageIndex === arrayOfPages.length - 1) {
             history.push('/review')
         } else {
             const newIdx: number = pageIndex + 1;
@@ -32,19 +35,37 @@ export const Form: React.FC<Props> = ({ message, name, dispatchName, pageIndex, 
         }
     }
 
+
     return (
         <div>
             <h2>{message}</h2>
             <form onSubmit={handleSubmit}>
-                <input
-                    required
-                    placeholder={name}
-                    value={state}
-                    onChange={(e: any) => setState(e.target.value)}
-                    style={{ marginRight: 10 }}
-                />
+                {pageIndex !== arrayOfPages.length - 1 ?
+                    <div style={{ maxWidth: 300, textAlign: 'center' }}>
+                        <SentimentVeryDissatisfiedIcon color="primary" />
+                        <Slider
+                            min={1}
+                            max={10}
+                            marks
+                            valueLabelDisplay='auto'
+                            onChange={(e: any) => setState(e.target.value)}
+                        />
+                        <InsertEmoticonIcon color="primary" />
+                    </div>
+                    :
+                    <input />
+                }
+
                 <button type="submit">Next</button>
             </form>
         </div>
     );
 }
+
+// <input
+// required
+// placeholder={name}
+// value={state}
+// onChange={(e: any) => setState(e.target.value)}
+// style={{ marginRight: 10 }}
+// />
