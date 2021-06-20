@@ -1,5 +1,5 @@
-const pg = require('pg');
-const url = require('url');
+import url from 'url';
+import pg from 'pg';
 
 let config = {};
 
